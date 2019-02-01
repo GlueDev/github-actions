@@ -6,12 +6,6 @@ workflow "Default" {
 action "Authenticate" {
   uses = "./authenticate"
   secrets = ["GCLOUD_AUTH"]
-}
-
-action "Build" {
-  needs = ["Authenticate"]
-  uses = "./build"
-
   env = {
     CLUSTER_NAME = "clienst-cluster"
     CLUSTER_PROJECT = "glue-clients"
@@ -19,7 +13,12 @@ action "Build" {
   }
 }
 
+action "Build" {
+  needs = ["Authenticate"]
+  uses = "./build"
+}
+
 action "Debug" {
   needs = ["Build"]
-  uses = "actions/bin/debug"
+  uses = "actions/bin/debug@master"
 }
