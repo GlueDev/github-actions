@@ -7,7 +7,7 @@ action "Authenticate" {
   uses = "./authenticate"
   secrets = ["GCLOUD_AUTH"]
   env = {
-    CLUSTER_NAME = "clienst-cluster"
+    CLUSTER_NAME = "clients-cluster"
     CLUSTER_PROJECT = "glue-clients"
     CLUSTER_REGION = "europe-west4-a"
   }
