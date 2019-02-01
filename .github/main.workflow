@@ -1,6 +1,6 @@
 workflow "Default" {
   on = "push"
-  resolves = "Debug"
+  resolves = "Deploy"
 }
 
 action "Configure" {
