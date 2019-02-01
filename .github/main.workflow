@@ -11,5 +11,5 @@ action "GCP Authenticate" {
 action "GCP List Clusters" {
   needs = ["GCP Authenticate"]
   uses = "actions/gcloud/cli@master"
-  args = "container clusters list"
+  args = "container clusters list --project glue-clients"
 }
