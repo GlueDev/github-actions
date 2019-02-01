@@ -4,11 +4,11 @@ workflow "Default" {
 }
 
 action "Authenticate" {
-  uses = "./.github/authenticate"
+  uses = "./authenticate"
   secrets = ["GCLOUD_AUTH"]
 }
 
 action "Build" {
   needs = ["Authenticate"]
-  uses = "./.github/build"
+  uses = "./build"
 }
