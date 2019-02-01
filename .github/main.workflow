@@ -1,15 +1,14 @@
 workflow "Default" {
   on = "push"
-  resolves = "GCP List Clusters"
+  resolves = "Build"
 }
 
-action "GCP Authenticate" {
-  uses = "actions/gcloud/auth@master"
+action "Authenticate" {
+  uses = "./.github/authenticate"
   secrets = ["GCLOUD_AUTH"]
 }
 
-action "GCP List Clusters" {
-  needs = ["GCP Authenticate"]
-  uses = "actions/gcloud/cli@master"
-  args = "container clusters list --project glue-clients"
+action "Build" {
+  needs = ["Authenticate"]
+  uses = "./.github/build"
 }
