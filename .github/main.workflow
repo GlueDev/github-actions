@@ -36,5 +36,7 @@ action "Deploy" {
   uses = "./deploy"
   env = {
     CONTAINER_URL = "gcr.io/glue-clients/github-actions"
+    APP_DEPLOYMENT = "test-deployment"
+    APP_PROJECT = "test"
   }
 }
