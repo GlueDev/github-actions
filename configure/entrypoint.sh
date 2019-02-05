@@ -1,7 +1,9 @@
 #!/bin/bash -l
 
 export APP_ENV=$([[ $GITHUB_REF == *"master" ]] && echo "production" || echo "staging")
+export ENV_FILE=".env$1"
 
-cd $GITHUB_WORKSPACE
-cp .env.$APP_ENV .env.production || true
-rm .env .env.staging || true
+cp ./.env.$APP_ENV ".tempenv" || true
+rm ./.env* || true
+cp ./.tempenv $ENV_FILE
+rm ./.tempenv
